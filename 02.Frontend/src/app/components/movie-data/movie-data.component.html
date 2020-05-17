@@ -1,0 +1,20 @@
+<table class = "table">
+    <thead class = "thead-dark">
+        <tr>
+            <th>Image </th>
+            <th>Name</th>
+            <th>Descripton</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let tempMovies of movies">
+            <td class ="align-middle">
+                <img src = "{{tempMovies.imageUrl}}" height = "50"/>
+            </td>
+            <td class = "align - middle">{{ tempMovies.name }}</td>
+            <td class = "align - middle">{{ tempMovies.description }}</td>
+            <td class = "align - middle">{{ tempMovies.unitPrice | currency : 'USD'}}</td>
+        </tr>
+    </tbody>
+</table>
