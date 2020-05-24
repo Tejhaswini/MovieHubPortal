@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-lg-3">
+      <app-movie-category></app-movie-category>
+    </div>
+
+    <!-- /.col-lg-3 -->
+  
+    <div class="col-lg-9"> 
+      <!-- /.row -->
+      <div class="row">
+       
+      <div class = "col-12 col-md-4">
+          <div class ="thumbnail">
+              <img src = "{{movie.imageUrl}}" width ="250" height ="300">
+          </div>
+     </div>
+
+      <div class ="col-12 col-md-8">
+          <h3>{{movie.name}}</h3>
+          <hr/>
+          <p>{{movie.description}}</p>
+          <hr/>
+          <h4>Price: <strong>12.99 USD</strong></h4>
+          <hr/>
+          <a routerLink = "/movies" class ="btn btn-success">
+              <i class ="fas fa-arrow-left"></i>Back
+          </a>
+          <button (click) = "addToCart()" class ="btn btn-primary ml-3">
+              <i class ="fas fa-cart-arrow-down"></i>Add To cart
+          </button>
+      </div>
+
+     </div> 
+    </div>
+    </div>
+    <!-- /.col-lg-9 -->
+  
+  
+  

@@ -1,0 +1,4 @@
+<div class="navbar-nav ml-2">
+  <input type = "text" #searchInput (keyup.Enter) = "searchBooks(searchInput.value)" class = "form-control" placeholder ="Search Movies">
+  <button type ="submit" (click) = "searchBooks(searchInput.value)" class ="btn btn-primary ml-2">Search</button>
+</div>

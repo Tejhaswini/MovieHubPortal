@@ -1,14 +1,15 @@
-<div class="row">
 
+
+<div class="row">
   <div class="col-lg-3">
-    <div class="list-group">
+    <!--<div class="list-group">
       <a routerLink ="/category/1" class="list-group-item">SCIENCE FICTION</a>
       <a routerLink ="/category/2" class="list-group-item">COMEDY</a>
       <a routerLink ="/category/3" class="list-group-item">SUPER HERO</a>
       <a routerLink ="/category/4" class="list-group-item">ANIMATION</a>
       <a routerLink = "/category/5" class="list-group-item">HORROR</a>
-    </div>
-
+    </div>-->
+    <app-movie-category></app-movie-category>
   </div>
   <!-- /.col-lg-3 -->
 
@@ -17,21 +18,61 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-4" *ngFor = "let tempMovies of movies">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src = "{{ tempMovies.imageUrl }}" alt = " "></a>
+            <a [routerLink] = "'/movies/'+tempMovies.id"><img class = "card-img-top" src = "{{ tempMovies.imageUrl }}" alt = " "></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">{{tempMovies.name}}</a>
+                <a [routerLink] = "'/movies/'+tempMovies.id">{{tempMovies.name}}</a>
               </h4>
               <h5>{{ tempMovies.unitPrice | currency : 'USD'}}</h5>
               <p class="card-text">{{tempMovies.description}}</p>
             </div>
             <div class="card-footer">
-             <button class = "btn btn-primary float-right">Add Cart</button>
+             <button class = "btn btn-primary float-right" (click) = "addToCart(tempMovies)">Add Cart</button>
             </div>
           </div>
+      </div>
+        <div *ngIf ="movies?.length == 0" class="col-md-12 alert alert-warning mt-3">
+          No Movies Found
         </div>
   </div>
-  </div>
   <!-- /.col-lg-9 -->
+  <div class="row">
 
+    <!-- page size drop down selection -->
+    <div class="col-md-6">
+
+      <div class="row">
+        <div class="col-md-3">
+          <span>Page Size: </span>
+        </div>
+        <div class="col-md-9">
+          <select (change)="updatePageSize($event.target.value)"
+                  class="form-control-sm">
+            <option>5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
+        </div>
+      </div>
+     
+    </div>
+
+    <!-- pagination component -->
+    <div class="col-md-6">
+      
+      <!-- client side paging -->
+      <!-- <jw-pagination [items]="books" (changePage)="onChangePage($event)"></jw-pagination> -->
+
+      <ngb-pagination [(page)]="currentPage"
+                      [pageSize]="pageSize" 
+                      [collectionSize]="totalRecords"
+                      (pageChange)="listMovies()"
+                       class = "d-flex justify-content-end">                      
+      </ngb-pagination>
+    </div>
+
+  </div>
+  </div>
+</div>
 

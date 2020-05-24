@@ -22,7 +22,9 @@ export class MovieCategoryComponent implements OnInit {
   listMovieCategories()
   {
   this.movieService.getMovieCategories().subscribe(
-  data => this.movieCategories = data
+  data => {this.movieCategories = data
+  console.log(data);
+  }
   );
   }
 }
